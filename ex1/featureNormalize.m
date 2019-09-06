@@ -9,6 +9,7 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 X_norm = X;
 mu = zeros(1, size(X, 2));
 sigma = zeros(1, size(X, 2));
+m = size(X, 2);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: First, for each feature dimension, compute the mean
@@ -26,13 +27,29 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+% mean/std automatically calculates the values for each feature
+
+% set mu to the mean of X
+mu = mean(X);
+% set sigma to the standard deviation of X
+sigma = std(X);
 
 
+% iterate over every feature
+for i = 1:m
 
+% set cx to current feature based on iterator
+cx = X(:,i);
 
+% subtrat mean of cx from each value of cx
+cx = cx - mu(i);
 
+% divide each value on cx by standard deviation
+cx = cx / sigma(i);
 
+X_norm(:,i) = cx;
 
+end
 
 % ============================================================
 

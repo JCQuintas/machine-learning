@@ -17,7 +17,7 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    % get all from the second column of X
+    % get all values from the second column of X
     x = X(:,2);
 
     % h(x) equals multiplying every entry on the x matrix by theta1 and then 
