@@ -17,11 +17,20 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % get all from the second column of X
+    x = X(:,2);
 
+    % h(x) equals multiplying every entry on the x matrix by theta1 and then adding theta0 to each resulting value
+    h = theta(1) + (theta(2)* x);
 
+    % calculated value of theta0
+    t0 = theta(1) - alpha * (1/m) * sum(h - y);
 
+    % calculated value of theta1
+    t1 = theta(2) - alpha * (1/m) * sum((h - y) .* x);
 
-
+    % update both values of theta at once
+    theta = [t0; t1];
 
     % ============================================================
 
