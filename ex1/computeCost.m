@@ -19,7 +19,8 @@ h = X * theta;
 % intermediate variable to hold the value of the matrix subtration (h - y)
 sub = h - y;
 
-% intermediate variable to hold the value of applying a square root to every value in the matrix
+% intermediate variable to hold the value of applying a square root to 
+% every value in the matrix (element-wise sqr)
 sqr = sub .^ 2;
 
 % cost(J) equals 1/2m times the sum of sqr

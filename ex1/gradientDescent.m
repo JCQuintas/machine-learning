@@ -20,13 +20,15 @@ for iter = 1:num_iters
     % get all from the second column of X
     x = X(:,2);
 
-    % h(x) equals multiplying every entry on the x matrix by theta1 and then adding theta0 to each resulting value
+    % h(x) equals multiplying every entry on the x matrix by theta1 and then 
+    % adding theta0 to each resulting value
     h = theta(1) + (theta(2)* x);
 
     % calculated value of theta0
     t0 = theta(1) - alpha * (1/m) * sum(h - y);
 
-    % calculated value of theta1
+    % calculated value of theta1, almost the same as theta0 except we 
+    % multiply each value by x(i) at the end
     t1 = theta(2) - alpha * (1/m) * sum((h - y) .* x);
 
     % update both values of theta at once
