@@ -12,8 +12,11 @@ theta = zeros(size(X, 2), 1);
 
 % ---------------------- Sample Solution ----------------------
 
+% This is basically of lecture 4's solution.
+% Pseudo Inverse of the result X transpose times X
+% Times X transpose times y
 
-
+theta = pinv(X' * X) * X' * y;
 
 % -------------------------------------------------------------
 

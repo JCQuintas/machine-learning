@@ -26,10 +26,10 @@ for iter = 1:num_iters
     h = X * theta;
 
     % iterate over the features of X
-    for j = 1:f
+    for j = 1:f;
 
       % small x is just the current 'feature' (j) column
-      x =  X(:,j)
+      x =  X(:,j);
 
       % for each feature, calculate the new theta(j)
       t_(j) = t_(j) - alpha * (1/m) * sum((h - y) .* x);
