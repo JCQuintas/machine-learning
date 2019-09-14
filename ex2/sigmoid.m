@@ -11,7 +11,7 @@ g = zeros(size(z));
 
 % We pretty much just perform the sigmoid function on every element using
 % elementwise operations
-g = (1 ./ (1 + e .^ -z));
+g = 1 ./ (1 + e .^ -z);
 
 % =============================================================
 

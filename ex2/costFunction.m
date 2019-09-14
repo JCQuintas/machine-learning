@@ -20,13 +20,28 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% Calculate h using the sigmoid function
+h = sigmoid(X * theta);
 
+% Define the cost J using appropriate formula
+J = 1 / m * sum(-y .* log(h) - (1 - y) .* log(1 - h));
 
-
-
-
-
+% Define gradient using new 'h of theta' formula
+grad = 1 / m * sum((h - y) .* X);
 
 % =============================================================
 
 end
+
+% Cost at test theta: 14.400000
+% Cost at test theta: 4.162757
+% Cost at test theta: 4.369710
+% Expected cost (approx): 0.218
+% Gradient at test theta: 
+%  -0.600000 
+%  20.806955 
+%  21.845107 
+% Expected gradients (approx):
+%  0.043
+%  2.566
+%  2.647
