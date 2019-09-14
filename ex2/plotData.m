@@ -12,13 +12,15 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+% Find the positive training samples
+pos = find(y == 1);
+% Find the negative training samples
+neg = find(y == 0);
 
-
-
-
-
-
-
+% Plot positive data and mark it with a +
+plot(X(pos, 1), X(pos, 2), 'k+','LineWidth', 2, 'MarkerSize', 7);
+% Plot negative data and mark it with an O
+plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerFaceColor', 'y', 'MarkerSize', 7);
 
 % =========================================================================
 
