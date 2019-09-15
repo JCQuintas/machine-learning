@@ -15,11 +15,9 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
-
-
-
-
-
+% Calculate the sigmoid for each element in X and use a boolean evaluation
+% that will run on each element
+p = sigmoid(X * theta) >= 0.5;
 
 % =========================================================================
 
