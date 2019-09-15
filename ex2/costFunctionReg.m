@@ -17,10 +17,22 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+% Calculate h using the sigmoid function
+h = sigmoid(X * theta);
 
+% We don't want to regularize theta 0
+% So we set it to 0, since it's used in an addition
+regularized_theta = [0; theta(2: end)];
 
+% Calculate the regularization
+regularization = lambda / (2 * m) * sum(regularized_theta .^ 2);
 
+% Define the cost J using appropriate formula
+J = 1 / m * sum(-y .* log(h) - (1 - y) .* log(1 - h)) + regularization;
 
+% Define gradient using new 'h of theta' formula
+% And also add a regularization part
+grad = 1 / m * sum((h - y) .* X) + lambda / m * regularized_theta;
 
 % =============================================================
 
