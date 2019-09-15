@@ -32,7 +32,7 @@ J = 1 / m * sum(-y .* log(h) - (1 - y) .* log(1 - h)) + regularization;
 
 % Define gradient using new 'h of theta' formula
 % And also add a regularization part
-grad = 1 / m * sum((h - y) .* X) + lambda / m * regularized_theta;
+grad = 1 / m * X' * (h - y) .+ (lambda / m * regularized_theta);
 
 % =============================================================
 
