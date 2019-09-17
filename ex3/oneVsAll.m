@@ -50,8 +50,25 @@ X = [ones(m, 1) X];
 %
 
 
+% Set initial theta
+initial_theta = zeros(n + 1, 1);
 
+% fmincg options
+options = optimset('GradObj', 'on', 'MaxIter', 50);
 
+% Loop through every label
+for c = 1:num_labels
+
+  % Create a boolean matrix that sets 1 if the value in y equals the c value
+  boolean_matrix = y == c;
+
+  % Run fmincg with all the parameters and get theta back
+  [theta] = fmincg(@(t)(lrCostFunction(t, X, boolean_matrix, lambda)), initial_theta, options);
+
+  % Add theta transpose as a row in all_theta
+  all_theta(c, :) = theta';
+
+end
 
 
 

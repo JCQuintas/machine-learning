@@ -30,11 +30,16 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% Get the sigmoid values for all the values in the matrix
+predicted = sigmoid(X * all_theta');
 
+% Get the maximum value for each row
+[predicted_max, index_max] = max(predicted, [], 2);
 
-
-
-
+% Return the index of the maximum value, one of 
+% 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+% each indicates which value was predicted, with 10 being 0
+p = index_max;
 
 % =========================================================================
 
