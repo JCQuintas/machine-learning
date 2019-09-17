@@ -21,13 +21,29 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Prepare a1 to have a bias
+a1 = [ones(m,1) X];
 
+% Calculate z2 as the product of a1 by theta1 transpose
+z2 = a1 * Theta1';
 
+% Prepare a2 to have bias
+% and the sigmoid of z2
+a2 = [ones(size(z2),1) sigmoid(z2)];
 
+% Calculate z3 as the product of a2 by theta2'
+z3 = a2 * Theta2';
 
+% a3 is simply the sigmoid of z3
+a3 = sigmoid(z3);
 
+% Get the maximum value for each row
+[predicted_max, index_max] = max(a3, [], 2);
 
-
+% Return the index of the maximum value, one of 
+% 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+% each indicates which value was predicted, with 10 being 0
+p = index_max;
 
 % =========================================================================
 
