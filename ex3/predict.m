@@ -22,14 +22,14 @@ p = zeros(size(X, 1), 1);
 %
 
 % Prepare a1 to have a bias
-a1 = [ones(m,1) X];
+a1 = [ones(m, 1) X];
 
 % Calculate z2 as the product of a1 by theta1 transpose
 z2 = a1 * Theta1';
 
 % Prepare a2 to have bias
 % and the sigmoid of z2
-a2 = [ones(size(z2),1) sigmoid(z2)];
+a2 = [ones(size(z2), 1) sigmoid(z2)];
 
 % Calculate z3 as the product of a2 by theta2'
 z3 = a2 * Theta2';
