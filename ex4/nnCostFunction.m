@@ -62,23 +62,52 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% recode y to Y
+identity = eye(num_labels);
+Y = zeros(m, num_labels);
+for i=1:m
+  Y(i, :)= identity(y(i), :);
+end
 
+% Prepare a1 to have a bias
+a1 = [ones(m, 1) X];
 
+% Calculate z2 as the product of a1 by theta1 transpose
+z2 = a1 * Theta1';
 
+% Prepare a2 to have bias
+% and the sigmoid of z2
+a2 = [ones(size(z2), 1) sigmoid(z2)];
 
+% Calculate z3 as the product of a2 by theta2'
+z3 = a2 * Theta2';
 
+% a3 is simply the sigmoid of z3
+a3 = sigmoid(z3);
 
+% Set hypothesis
+h = a3;
 
+% calculte error
+err = sum(sum(Theta1(:, 2:end) .^ 2, 2))+sum(sum(Theta2(:, 2:end) .^ 2, 2));
 
+% calculate J
+J = sum(sum((-Y) .* log(h) - (1-Y) .* log(1 - h), 2)) / m + lambda * err / (2 * m);
 
+% calculate sigmas
+sigma3 = a3 .- Y;
+sigma2 = (sigma3 * Theta2) .* sigmoidGradient([ones(size(z2, 1), 1) z2]);
+sigma2 = sigma2(:, 2:end);
 
+% accumulate gradients
+delta_1 = (sigma2' * a1);
+delta_2 = (sigma3' * a2);
 
-
-
-
-
-
-
+% calculate regularized gradient
+p1 = (lambda / m) * [zeros(size(Theta1, 1), 1) Theta1(:, 2:end)];
+p2 = (lambda / m) * [zeros(size(Theta2, 1), 1) Theta2(:, 2:end)];
+Theta1_grad = delta_1 ./ m + p1;
+Theta2_grad = delta_2 ./ m + p2;
 
 % -------------------------------------------------------------
 
