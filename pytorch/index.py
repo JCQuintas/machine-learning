@@ -23,7 +23,6 @@ get_ipython().run_line_magic("matplotlib", "inline")
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-
 #%%
 # loading dataset
 train = pd.read_csv("pytorch/data/train.csv")
@@ -59,16 +58,13 @@ for img_name in train["id"]:
 train_x = np.array(train_img)
 train_x.shape
 
-
 #%%
 train_x = train_x / train_x.max()
 train_x = train_x.reshape(-1, 28 * 28).astype("float32")
 train_x.shape
 
-
 #%%
 train_y = train["label"].values
-
 
 #%%
 # create validation set
