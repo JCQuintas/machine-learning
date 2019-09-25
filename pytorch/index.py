@@ -73,7 +73,6 @@ train_x, val_x, train_y, val_y = train_test_split(
 )
 (train_x.shape, train_y.shape), (val_x.shape, val_y.shape)
 
-
 #%%
 import torch
 from torch.autograd import Variable
@@ -89,7 +88,6 @@ output_num_units = 10
 # set remaining variables
 epochs = 20
 learning_rate = 0.0005
-
 
 #%%
 # define model
