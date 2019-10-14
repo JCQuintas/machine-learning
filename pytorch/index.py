@@ -25,9 +25,9 @@ from sklearn.metrics import accuracy_score
 
 #%%
 # loading dataset
-train = pd.read_csv("pytorch/data/train.csv")
-test = pd.read_csv("pytorch/data/test.csv")
-sample_submission = pd.read_csv("pytorch/data/sample_submission_I5njJSF.csv")
+train = pd.read_csv("data/train.csv")
+test = pd.read_csv("data/test.csv")
+sample_submission = pd.read_csv("data/sample_submission_I5njJSF.csv")
 train.head()
 
 
@@ -40,7 +40,7 @@ rng = np.random.RandomState(seed)
 #%%
 # print an image
 img_name = rng.choice(train["id"])
-filepath = "pytorch/data/train/" + str(img_name) + ".png"
+filepath = "data/train/" + str(img_name) + ".png"
 img = imread(filepath, as_gray=True)
 img = img.astype("float32")
 plt.figure(figsize=(5, 5))
@@ -51,7 +51,7 @@ plt.imshow(img, cmap="gray")
 # loading training images
 train_img = []
 for img_name in train["id"]:
-    image_path = "pytorch/data/train/" + str(img_name) + ".png"
+    image_path = "data/train/" + str(img_name) + ".png"
     img = imread(image_path, as_gray=True)
     img = img.astype("float32")
     train_img.append(img)
